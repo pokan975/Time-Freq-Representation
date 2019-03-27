@@ -67,8 +67,8 @@ axis xy
 z = hilbert(r);
 [tfr, ~, ~] = tfrwv(z);
 tfr = 20*log10(abs(tfr));
-tfr([1:end/2 end/2+1:end], :) = tfr([end/2+1:end 1:end/2], :);
 figure(5)
+f = f + fs/4;
 imagesc(t, f, tfr);
 xlabel('Time (sec)')
 ylabel('Frequency (Hz)')
