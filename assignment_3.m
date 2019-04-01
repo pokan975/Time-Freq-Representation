@@ -15,9 +15,9 @@ N = length(x);
 tfr = 20*log10(abs(tfr));
 figure(1)
 f = f*fs;
-imagesc(t, f, tfr);
+imagesc(t, f/1e3, tfr);
 xlabel('Time (sec)')
-ylabel('Frequency (Hz)')
+ylabel('Frequency (kHz)')
 title('WD of LFM signal x(t) = e^{j2\pi(f_0t+\alpha t^2/2)}')
 colormap winter
 axis xy
@@ -27,10 +27,10 @@ h = gausswin(101);
 [tfr, ~, ~] = tfrsp(x, t1, N, h);
 ff = fs/N:fs/N:fs;
 figure(2)
-imagesc(t, ff, tfr)
-axis([0 T 0 fs/2]);
+imagesc(t, ff/1e3, tfr)
+axis([0 T 0 fs/(2*1e3)]);
 xlabel('Time (sec)')
-ylabel('Frequency (Hz)')
+ylabel('Frequency (kHz)')
 title('QTFR Spectrogram of signal x(t) = e^{j2\pi(f_0t+\alpha t^2/2)}')
 axis xy
 
@@ -41,9 +41,9 @@ tfr = 20*log10(abs(tfr));
 tfr([1:end/2 end/2+1:end], :) = tfr([end/2+1:end 1:end/2], :);
 figure(3)
 f = f - fs/4;
-imagesc(t, f, tfr);
+imagesc(t, f/1e3, tfr);
 xlabel('Time (sec)')
-ylabel('Frequency (Hz)')
+ylabel('Frequency (kHz)')
 title('WD of real signal g(t) = cos2\pi(f_0t+\alpha t^2/2), T_d = 10ms')
 colormap winter
 axis xy
@@ -56,9 +56,9 @@ r = cos(2*pi*(f0*t + (alpha/2)*(t.*t)));
 tfr = 20*log10(abs(tfr));
 tfr([1:end/2 end/2+1:end], :) = tfr([end/2+1:end 1:end/2], :);
 figure(4)
-imagesc(t, f, tfr);
+imagesc(t, f/1e3, tfr);
 xlabel('Time (sec)')
-ylabel('Frequency (Hz)')
+ylabel('Frequency (kHz)')
 title('WD of real signal r(t) = cos2\pi(f_0t+\alpha t^2/2), T_d = 20ms')
 colormap winter
 axis xy
@@ -69,9 +69,9 @@ z = hilbert(r);
 tfr = 20*log10(abs(tfr));
 figure(5)
 f = f + fs/4;
-imagesc(t, f, tfr);
+imagesc(t, f/1e3, tfr);
 xlabel('Time (sec)')
-ylabel('Frequency (Hz)')
+ylabel('Frequency (kHz)')
 title('WD of analytic signal of z(t) = cos2\pi(f_0t+\alpha t^2/2)')
 colormap winter
 axis xy
